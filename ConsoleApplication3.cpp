@@ -117,7 +117,7 @@ public:
 			}
 		}
 		if (!flag) cout << "Введенная глубина не найдена - " << height_buf << endl;
-	}
+  }
 };
 
 int main()
