@@ -19,7 +19,6 @@ private:
 	vector <Pressure> pressure_v;
 
 public:
-
 	// Считывание файла
 	vector<string> read_file(ifstream& in) {
 		vector<string> str;
@@ -102,6 +101,22 @@ public:
 		for (const auto& item : pressure_v) {
 			printf("%s %.1f %d\n", item.date.c_str(), item.height, item.value);
 		}
+		cout << endl;
+	}
+
+	void print_by_height() {
+		double height_buf;
+		cout << endl << "Введите значение нужной глубины: ";
+		cin >> height_buf;
+		cout << endl;
+		bool flag = false;
+		for (const auto& item : pressure_v) {
+			if (item.height == height_buf) {
+				flag = true;
+				printf("%s %.1f %d\n", item.date.c_str(), item.height, item.value);
+			}
+		}
+		if (!flag) cout << "Введенная глубина не найдена - " << height_buf << endl;
 	}
 };
 
@@ -120,4 +135,11 @@ int main()
 
 	// Вывод данных
 	result.cout_result();
+
+	bool op;
+	cout << "Хотите вывести данные по глубине? (1 или 0) ";
+	cin >> op;
+	if (op) {
+		result.print_by_height();
+	}
 }
