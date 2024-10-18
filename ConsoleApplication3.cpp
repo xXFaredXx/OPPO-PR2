@@ -103,6 +103,23 @@ public:
 			printf("%s %.1f %d\n", item.date.c_str(), item.height, item.value);
 		}
 	}
+
+	void PrintByHeight() {
+		double h;
+		cout << "Введите искомую глубину: ";
+		cin >> h;
+		bool flag = false;
+		for (auto& Pressure : pressure_v) {
+			if (Pressure.height == h) {
+				cout << Pressure.date << " " << Pressure.height << " " << Pressure.value << endl;
+				flag = true;
+			}
+		}
+		if (!flag) {
+			cout << "Ошибка: Введенная глубина не найдена!" << endl;
+		}
+		
+	}
 };
 
 int main()
@@ -120,4 +137,7 @@ int main()
 
 	// Вывод данных
 	result.cout_result();
+
+	//Вывод по искомой глубине
+	result.PrintByHeight();
 }
